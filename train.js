@@ -1,5 +1,6 @@
 function findMaxIndex(arr) {
-    if (arr.length === 0) return -1; // Agar array bo'sh bo'lsa, -1 qaytaradi
+    if (arr.length === 0) 
+        return -1; // Agar array bo'sh bo'lsa, -1 qaytaradi
   
     let maxIndex = 0; // Eng katta elementning indexini saqlash
     let maxValue = arr[0]; // Birinchi elementni eng katta deb faraz qilamiz
