@@ -1,13 +1,17 @@
-function filterPositive(arr: number[]): string {
-    // Arraydan faqat musbat sonlarni filter qilish
-    const positiveNumbers = arr.filter(number => number > 0);
-    
-    // Musbat sonlarni string ko'rinishga o'zgartirish
-    return positiveNumbers.join(", ");
+// H2 - TASK:
+
+function digits(input: string): string {
+  let digits = ""; // Raqamlarni saqlash uchun bo'sh string yaratamiz
+
+  // Har bir belgini tekshirish uchun for tsiklini ishlatamiz
+  for (let i = 0; i < input.length; i++) {
+      const char = input[i];
+      if (char >= '0' && char <= '9') {
+          digits += char; // Agar belgi raqam bo'lsa, uni digits stringiga qo'shamiz
+      }
   }
-  
-  
-  const exampleArray = [-10, 20, 30, -40, 50];
-  const result = filterPositive(exampleArray);
-  console.log(result);  
-  
+
+  return digits; // Faqat raqamlardan iborat stringni qaytaramiz
+}
+
+console.log(digits("m1fdg4gi15t"));
