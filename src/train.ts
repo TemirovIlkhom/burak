@@ -1,3 +1,46 @@
+
+function majorityElement(number: number[]): number {
+    const countMap = new Map<number, number>();
+
+    // Raqamlarni va ularning takrorlanishlarini hisoblash
+    for (const num of number) {
+        if (countMap.has(num)) {
+            countMap.set(num, countMap.get(num)! + 1);
+        } else {
+            countMap.set(num, 1);
+        }
+    }
+
+    // Eng ko'p takrorlangan raqamni aniqlash
+    let majorityElement = number[0];
+    let maxCount = 0;
+
+    for (const [num, count] of countMap) {
+        if (count > maxCount) {
+            majorityElement = num;
+            maxCount = count;
+        }
+    }
+
+    return majorityElement;
+}
+
+// Misol uchun funksiyani chaqirish
+const result = majorityElement([1,2,3,2,5,4,3,2]);
+console.log(result);  // Kutilgan natija: 4
+
+
+
+
+
+
+
+
+
+
+
+
+
 // H2 - TASK:
 
 // function digits(input: string): string {
