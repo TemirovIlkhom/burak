@@ -2,7 +2,7 @@
 const router = express.Router();
 import memberController from "./controllers/member.controller";
 
-router.post("/login", memberController.login);
+router.post("/login", memberController.login); // REST API
 
 router.post("/signup", memberController.signup);
 
