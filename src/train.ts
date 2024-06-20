@@ -1,20 +1,38 @@
-function findLongestWord(sentence: string): string {
-    // Jumladagi so'zlarni bo'lish
-    const words = sentence.split(" ");
-  
-    // Eng uzun so'zni topish
-    let longestWord = "";
-    for (const word of words) {
-      if (word.length > longestWord.length) {
-        longestWord = word;
+function count(input: string): number {
+  // Unli harflarni o'z ichiga olgan to'plam
+  const vowels: Set<string> = new Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']);
+  let count = 0;
+
+  // Stringdagi har bir belgini tekshirish
+  for (const char of input) {
+      if (vowels.has(char)) {
+          count++;
       }
-    }
-  
-    return longestWord;
   }
+
+  return count;
+}
+console.log(count("Hello World")); // 3
+
+
+
+// function findLongestWord(sentence: string): string {
+//     // Jumladagi so'zlarni bo'lish
+//     const words = sentence.split(" ");
   
-  // Funksiya sinov
-  console.log(findLongestWord("I come from Uzbekistan")); // "Uzbekistan"
+//     // Eng uzun so'zni topish
+//     let longestWord = "";
+//     for (const word of words) {
+//       if (word.length > longestWord.length) {
+//         longestWord = word;
+//       }
+//     }
+  
+//     return longestWord;
+//   }
+  
+//   // Funksiya sinov
+//   console.log(findLongestWord("I come from Uzbekistan")); // "Uzbekistan"
 
 
 
