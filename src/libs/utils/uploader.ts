@@ -10,7 +10,7 @@ function getTargetImageStorage( address: any) {
             cb(null, `./uploads/${address}`);
         },
         filename: function (req, file, cb) {
-            const extension = path.parse(file.originalname).ext;
+            const extension = path.parse(file.originalname).ext; // image .png
             const random_name = v4() + extension;
             cb(null, random_name);
         }

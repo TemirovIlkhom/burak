@@ -63,4 +63,4 @@ const productSchema = new Schema({
 productSchema.index({productName: 1, ProductSize: 1, ProductVolume: 1},
     {unique: true}
 )
-export default mongoose.model("Member", productSchema);
+export default mongoose.model("Product", productSchema);
