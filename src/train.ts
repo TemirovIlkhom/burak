@@ -1,18 +1,33 @@
-function count(input: string): number {
-  // Unli harflarni o'z ichiga olgan to'plam
-  const vowels: Set<string> = new Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']);
-  let count = 0;
-
-  // Stringdagi har bir belgini tekshirish
-  for (const char of input) {
-      if (vowels.has(char)) {
-          count++;
-      }
-  }
-
-  return count;
+function reverseSentence(sentence: string): string {
+  // Stringni so'zlarga ajratamiz
+  const words = sentence.split(" ");
+  
+  // Har bir so'zni teskari qilib, yangi arrayga joylaymiz
+  const reversedWords = words.map(word => word.split("").reverse().join(""));
+  
+  // Teskari so'zlarni birlashtirib, natijani qaytaramiz
+  return reversedWords.join(" ");
 }
-console.log(count("Hello World")); // 3
+
+// Test
+console.log(reverseSentence("we like coding!")); // "ew ekil !gnidoc"
+
+
+// function count(input: string): number {
+//   // Unli harflarni o'z ichiga olgan to'plam
+//   const vowels: Set<string> = new Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']);
+//   let count = 0;
+
+//   // Stringdagi har bir belgini tekshirish
+//   for (const char of input) {
+//       if (vowels.has(char)) {
+//           count++;
+//       }
+//   }
+
+//   return count;
+// }
+// console.log(count("Hello World")); 
 
 
 
