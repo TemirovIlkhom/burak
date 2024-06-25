@@ -35,7 +35,7 @@ routerAdmin
      restaurantController.verifyRestaurant, 
      productController.updateChosenProduct);
  
- 
+
 /** User */
 
 
