@@ -1,16 +1,11 @@
 function reverseSentence(sentence: string): string {
-  // Stringni so'zlarga ajratamiz
   const words = sentence.split(" ");
   
-  // Har bir so'zni teskari qilib, yangi arrayga joylaymiz
   const reversedWords = words.map(word => word.split("").reverse().join(""));
   
-  // Teskari so'zlarni birlashtirib, natijani qaytaramiz
   return reversedWords.join(" ");
 }
-
-// Test
-console.log(reverseSentence("we like coding!")); // "ew ekil !gnidoc"
+console.log(reverseSentence("we like coding!"));
 
 
 // function count(input: string): number {

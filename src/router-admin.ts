@@ -12,7 +12,8 @@ routerAdmin
 
 routerAdmin
 .get("/signup", restaurantController.getSignup)
-.post("/signup", makeUploader("members").single("memberImage"), restaurantController.processSignup);
+.post("/signup", makeUploader("members")
+.single("memberImage"), restaurantController.processSignup);
 routerAdmin
 .get("/logout", restaurantController.logout)
 routerAdmin
@@ -30,9 +31,11 @@ routerAdmin
     restaurantController.verifyRestaurant, 
     makeUploader("products").array("productImages", 5),
     productController.createNewProduct)
-.post("/product/:id", restaurantController.verifyRestaurant, productController.updateChosenProduct);
-
-
+.post("/product/:id",
+     restaurantController.verifyRestaurant, 
+     productController.updateChosenProduct);
+ 
+ 
 /** User */
 
 
