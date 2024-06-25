@@ -1,11 +1,30 @@
-function reverseSentence(sentence: string): string {
-  const words = sentence.split(" ");
-  
-  const reversedWords = words.map(word => word.split("").reverse().join(""));
-  
-  return reversedWords.join(" ");
+function getSquareNumbers(numbers: number[]): { number: number, square: number }[] {
+  return numbers.map(num => {
+      return { number: num, square: num * num };
+  });
 }
-console.log(reverseSentence("we like coding!"));
+/**
+ numbers nomli array argument sifatida qabul qilinadi.
+map metodi yordamida har bir element ustida quyidagi amallar bajariladi:
+num argumenti sifatida arrayning har bir elementi olinadi.
+Har bir element uchun { number: num, square: num * num } shaklida object hosil qilinadi.
+Natijada yangi hosil bo'lgan objectlardan tashkil topgan array qaytariladi.
+Quyidagi misolda funksiya [1, 2, 3] 
+arrayini qayta ishlaydi va { number: 1, square: 1 }, { number: 2, square: 4 }, va { number: 3, square: 9 } 
+objectlaridan tashkil topgan arrayni qaytaradi.
+ */
+const result = getSquareNumbers([1, 2, 3]);
+console.log(result); 
+
+
+// function reverseSentence(sentence: string): string {
+//   const words = sentence.split(" ");
+  
+//   const reversedWords = words.map(word => word.split("").reverse().join(""));
+  
+//   return reversedWords.join(" ");
+// }
+// console.log(reverseSentence("we like coding!"));
 
 
 // function count(input: string): number {
