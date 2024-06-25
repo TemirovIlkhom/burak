@@ -51,7 +51,7 @@ restaurantController.processSignup = async (req: AdminRequest, res: Response) =>
             throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
 
         const newMember: MemberInput = req.body;
-        newMember.memberImage = file?.path;
+        newMember.memberImage = file?.path; //=> return ele.path.replace(/\\/g, "/"); windows ushun
         newMember.memberType = MemberType.RESTAURANT;
         const result = await memberService.processSignup(newMember);
 // TODO: SESSIONS AUTHENTICATION
