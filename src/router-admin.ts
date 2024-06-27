@@ -31,12 +31,16 @@ routerAdmin
     restaurantController.verifyRestaurant, 
     makeUploader("products").array("productImages", 5),
     productController.createNewProduct)
-.post("/product/:id",
+.post("/product/:id",  // :id => params
      restaurantController.verifyRestaurant, 
      productController.updateChosenProduct);
  
 
 /** User */
+
+routerAdmin.get("/user/all", 
+    restaurantController.verifyRestaurant, 
+    restaurantController.getUsers)
 
 
 export default routerAdmin;
