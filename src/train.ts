@@ -1,20 +1,35 @@
-function getSquareNumbers(numbers: number[]): { number: number, square: number }[] {
-  return numbers.map(num => {
-      return { number: num, square: num * num };
-  });
+function palindromCheck(str: string): boolean {
+  // Kiritilgan stringning barcha harflarini kichik harfga o'tkazib ol
+  const normalizedStr = str.toLowerCase();
+  // Kiritilgan stringni orqadan oldinga qarab o'qiydigan stringni yarat
+  const reversedStr = normalizedStr.split('').reverse().join('');
+  // Kiritilgan stringni orqadan o'qib olingan string bilan taqqosla
+  return normalizedStr === reversedStr;
 }
-/**
- numbers nomli array argument sifatida qabul qilinadi.
-map metodi yordamida har bir element ustida quyidagi amallar bajariladi:
-num argumenti sifatida arrayning har bir elementi olinadi.
-Har bir element uchun { number: num, square: num * num } shaklida object hosil qilinadi.
-Natijada yangi hosil bo'lgan objectlardan tashkil topgan array qaytariladi.
-Quyidagi misolda funksiya [1, 2, 3] 
-arrayini qayta ishlaydi va { number: 1, square: 1 }, { number: 2, square: 4 }, va { number: 3, square: 9 } 
-objectlaridan tashkil topgan arrayni qaytaradi.
- */
-const result = getSquareNumbers([1, 2, 3]);
-console.log(result); 
+
+console.log(palindromCheck("dad")); // true
+console.log(palindromCheck("son")); // false
+
+
+
+
+// function getSquareNumbers(numbers: number[]): { number: number, square: number }[] {
+//   return numbers.map(num => {
+//       return { number: num, square: num * num };
+//   });
+// }
+// /**
+//  numbers nomli array argument sifatida qabul qilinadi.
+// map metodi yordamida har bir element ustida quyidagi amallar bajariladi:
+// num argumenti sifatida arrayning har bir elementi olinadi.
+// Har bir element uchun { number: num, square: num * num } shaklida object hosil qilinadi.
+// Natijada yangi hosil bo'lgan objectlardan tashkil topgan array qaytariladi.
+// Quyidagi misolda funksiya [1, 2, 3] 
+// arrayini qayta ishlaydi va { number: 1, square: 1 }, { number: 2, square: 4 }, va { number: 3, square: 9 } 
+// objectlaridan tashkil topgan arrayni qaytaradi.
+//  */
+// const result = getSquareNumbers([1, 2, 3]);
+// console.log(result); 
 
 
 // function reverseSentence(sentence: string): string {
