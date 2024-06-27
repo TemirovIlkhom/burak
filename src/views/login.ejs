@@ -1,13 +1,45 @@
 <%- include('includes/header') %>
+
+<link rel="stylesheet" type="text/css" href="/css/login.css" />
+
 <body>
-    <div class="card" style="width: 18rem;">
-        <img src="https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w1200/2023/10/free-images.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">LOGIN PAGE</h5>
-          <br class="card-text"></br></p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+  <form class="login-container" action="/admin/login" METHOD="POST">
+    <div class="login-frame">
+      <div class="login-top">
+        <span>Enter</span>
+        <div>Go back <a href="/admin" style="color: #6440fb">Home</a></div>
+        <p>
+          Not registered yet?
+          <a href="/admin/signup" style="color: #6440fb">Signup</a>
+        </p>
+      </div>
+      <div class="login-input-frame">
+        <div class="login-input-container">
+          <label>Restaurant *</label>
+          <input
+            type="text"
+            name="memberNick"
+            class="member-nick"
+            placeholder="Username"
+            value=""
+            required
+          />
+        </div>
+        <div class="login-input-container">
+          <label>Password *</label>
+          <input
+            type="password"
+            name="memberPassword"
+            class="member-password"
+            placeholder="Password"
+            value=""
+            required
+          />
         </div>
       </div>
+      <button class="login-btn btn" name="login" type="submit">Login</button>
+    </div>
+  </form>
 </body>
 
 <%- include('includes/footer') %>
