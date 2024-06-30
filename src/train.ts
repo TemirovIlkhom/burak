@@ -1,14 +1,30 @@
-function palindromCheck(str: string): boolean {
-  // Kiritilgan stringning barcha harflarini kichik harfga o'tkazib ol
-  const normalizedStr = str.toLowerCase();
-  // Kiritilgan stringni orqadan oldinga qarab o'qiydigan stringni yarat
-  const reversedStr = normalizedStr.split('').reverse().join('');
-  // Kiritilgan stringni orqadan o'qib olingan string bilan taqqosla
-  return normalizedStr === reversedStr;
+function calculateSumOfNumbers(arr: any[]): number {
+  return arr.reduce((sum, item) => {
+      if (typeof item === 'number') {
+          return sum + item;
+      }
+      return sum;
+  }, 0);
 }
 
-console.log(palindromCheck("dad")); // true
-console.log(palindromCheck("son")); // false
+
+const result = calculateSumOfNumbers([10, "10", {son: 10}, true, 35]);
+console.log(result);  // 45
+
+
+
+
+// function palindromCheck(str: string): boolean {
+//   // Kiritilgan stringning barcha harflarini kichik harfga o'tkazib ol
+//   const normalizedStr = str.toLowerCase();
+//   // Kiritilgan stringni orqadan oldinga qarab o'qiydigan stringni yarat
+//   const reversedStr = normalizedStr.split('').reverse().join('');
+//   // Kiritilgan stringni orqadan o'qib olingan string bilan taqqosla
+//   return normalizedStr === reversedStr;
+// }
+
+// console.log(palindromCheck("dad")); // true
+// console.log(palindromCheck("son")); // false
 
 
 
