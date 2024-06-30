@@ -63,7 +63,7 @@ req.session.save(function () {
     } catch (err) {
         console.log("ERROR, processSignup:", err);
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG
-        res.send(`<script> alert("${message}"); window.location("admin/signup") </script>`)
+        res.send(`<script> alert("${message}"); window.location("/admin/signup") </script>`)
     }
 };
 
@@ -82,7 +82,7 @@ req.session.save(function () {
     } catch (err) {
         console.log("ERROR, processLogin:", err);
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG
-        res.send(`<script> alert("${message}"); window.location("admin/login") </script>`)
+        res.send(`<script> alert("${message}"); window.location("/admin/login") </script>`)
     }
 };
 
