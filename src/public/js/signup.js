@@ -1,7 +1,7 @@
 console.log("Signup frontend javascript file");
 
 $(function () {
-    const fileTarget = $(".file-box upload-hidden");
+    const fileTarget = $(".file-box .upload-hidden");
     let filename;
 
     fileTarget.on("change", function () {
@@ -47,8 +47,7 @@ function validationSignupForm() {
         return false;
     }
 
-    const memberImage = $(".member-image").get(0).files[0]
-    ? $(".member-image").get(0).files[0].name : null;
+    const memberImage = $(".member-image").get(0).files[0].name ? $(".member-image").get(0).files[0].name : null;
     if (!memberImage) {
         alert("Please insert restaurant image!");
         return false;
