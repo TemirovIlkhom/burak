@@ -4,6 +4,7 @@ function hasProperty(obj: object, prop: string): boolean {
     return obj.hasOwnProperty(prop);
 }
 
+
 console.log(hasProperty({name: "BMW", model: "M3"}, "model")); // true qaytadi
 console.log(hasProperty({name: "BMW", model: "M3"}, "year"));  // false qaytadi
 
