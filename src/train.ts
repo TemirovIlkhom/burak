@@ -1,11 +1,21 @@
-function objectToArray(obj: { [key: string]: any }): [string, any][] {
-  return Object.entries(obj);
+// Q - TASC
+
+function hasProperty(obj: object, prop: string): boolean {
+    return obj.hasOwnProperty(prop);
 }
 
-const exampleObject = { a: 10, b: 20 };
-const result = objectToArray(exampleObject);
+console.log(hasProperty({name: "BMW", model: "M3"}, "model")); // true qaytadi
+console.log(hasProperty({name: "BMW", model: "M3"}, "year"));  // false qaytadi
 
-console.log(result); // [['a', 10], ['b', 20]]
+
+// function objectToArray(obj: { [key: string]: any }): [string, any][] {
+//   return Object.entries(obj);
+// }
+
+// const exampleObject = { a: 10, b: 20 };
+// const result = objectToArray(exampleObject);
+
+// console.log(result); // [['a', 10], ['b', 20]]
 
 
 
