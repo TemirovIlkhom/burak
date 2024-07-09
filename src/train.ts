@@ -1,12 +1,33 @@
-// Q - TASC
 
-function hasProperty(obj: object, prop: string): boolean {
-    return obj.hasOwnProperty(prop);
+//R -TASK
+
+function calculate(expression: string): number {
+    // "+" belgisi bo'yicha stringni ajratib
+    const parts = expression.split('+');
+    
+    // Har bir qismni raqamga aylantiramiz va yig'indisini hisoblaymiz
+    const sum = parts.reduce((ac, part) => ac + parseFloat(part), 0);
+    
+    return sum;
 }
 
+// Misollar
+console.log(calculate("1+3")); // 4
+console.log(calculate("10+20+30")); // 60
+console.log(calculate("4.5+5.5")); // 10
 
-console.log(hasProperty({name: "BMW", model: "M3"}, "model")); // true qaytadi
-console.log(hasProperty({name: "BMW", model: "M3"}, "year"));  // false qaytadi
+
+
+
+// Q - TASC
+
+// function hasProperty(obj: object, prop: string): boolean {
+//     return obj.hasOwnProperty(prop);
+// }
+
+
+// console.log(hasProperty({name: "BMW", model: "M3"}, "model")); // true qaytadi
+// console.log(hasProperty({name: "BMW", model: "M3"}, "year"));  // false qaytadi
 
 
 // function objectToArray(obj: { [key: string]: any }): [string, any][] {
