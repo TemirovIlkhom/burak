@@ -1,20 +1,41 @@
+function missingNumber(nums: number[]): number {
+    // Arrayning uzunligini topamiz
+    const n = nums.length;
+
+    // 0 dan n gacha bo'lgan sonlarning sumasini hisoblaymiz
+    const expectedSum = (n * (n + 1)) / 2;
+
+    // Arraydagi barcha sonlarning sumasini topamiz
+    const actualSum = nums.reduce((sum, num) => sum + num, 0);
+
+    // Kutilgan summa va haqiqiy summa orasidagi farq yo'qolgan son bo'ladi
+    return expectedSum - actualSum;
+}
+
+// Misol uchun
+console.log(missingNumber([3, 0, 1])); // 2
+console.log(missingNumber([0, 1])); // 2
+console.log(missingNumber([9,6,4,2,3,5,7,0,1])); // 8
+
+
+
 
 //R -TASK
 
-function calculate(expression: string): number {
-    // "+" belgisi bo'yicha stringni ajratib
-    const parts = expression.split('+');
+// function calculate(expression: string): number {
+//     // "+" belgisi bo'yicha stringni ajratib
+//     const parts = expression.split('+');
     
-    // Har bir qismni raqamga aylantiramiz va yig'indisini hisoblaymiz
-    const sum = parts.reduce((ac, part) => ac + parseFloat(part), 0);
+//     // Har bir qismni raqamga aylantiramiz va yig'indisini hisoblaymiz
+//     const sum = parts.reduce((ac, part) => ac + parseFloat(part), 0);
     
-    return sum;
-}
+//     return sum;
+// }
 
-// Misollar
-console.log(calculate("1+3")); // 4
-console.log(calculate("10+20+30")); // 60
-console.log(calculate("4.5+5.5")); // 10
+// // Misollar
+// console.log(calculate("1+3")); // 4
+// console.log(calculate("10+20+30")); // 60
+// console.log(calculate("4.5+5.5")); 
 
 
 
