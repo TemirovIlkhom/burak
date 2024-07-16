@@ -1,21 +1,60 @@
-function missingNumber(nums: number[]): number {
-    // Arrayning uzunligini topamiz
-    const n = nums.length;
+function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
+    // Birlashtirilgan array va indexlar uchun boshlang'ich qiymatlarni belgilaymiz
+    const mergedArray: number[] = [];
+    let i = 0;
+    let j = 0;
 
-    // 0 dan n gacha bo'lgan sonlarning sumasini hisoblaymiz
-    const expectedSum = (n * (n + 1)) / 2;
+    // Ikkala arraydagi elementlarni solishtirib, kichikroq elementni mergedArray ga qo'shamiz
+    while (i < arr1.length && j < arr2.length) {
+        if (arr1[i] < arr2[j]) {
+            mergedArray.push(arr1[i]);
+            i++;
+        } else {
+            mergedArray.push(arr2[j]);
+            j++;
+        }
+    }
 
-    // Arraydagi barcha sonlarning sumasini topamiz
-    const actualSum = nums.reduce((sum, num) => sum + num, 0);
+    // Agar arr1 da qolgan elementlar bo'lsa, ularni mergedArray ga qo'shamiz
+    while (i < arr1.length) {
+        mergedArray.push(arr1[i]);
+        i++;
+    }
 
-    // Kutilgan summa va haqiqiy summa orasidagi farq yo'qolgan son bo'ladi
-    return expectedSum - actualSum;
+    // Agar arr2 da qolgan elementlar bo'lsa, ularni mergedArray ga qo'shamiz
+    while (j < arr2.length) {
+        mergedArray.push(arr2[j]);
+        j++;
+    }
+
+    return mergedArray;
 }
 
 // Misol uchun
-console.log(missingNumber([3, 0, 1])); // 2
-console.log(missingNumber([0, 1])); // 2
-console.log(missingNumber([9,6,4,2,3,5,7,0,1])); // 8
+const array1 = [0, 3, 4, 31];
+const array2 = [4, 6, 30];
+const result = mergeSortedArrays(array1, array2);
+console.log("T-tack",result); // [0, 3, 4, 4, 6, 30, 31]
+
+
+// function missingNumber(nums: number[]): number {
+//     // Arrayning uzunligini topamiz
+//     const n = nums.length;
+
+//     // 0 dan n gacha bo'lgan sonlarning sumasini hisoblaymiz
+//     const expectedSum = (n * (n + 1)) / 2;
+
+//     // Arraydagi barcha sonlarning sumasini topamiz
+//     const actualSum = nums.reduce((sum, num) => sum + num, 0);
+
+//     // Kutilgan summa va haqiqiy summa orasidagi farq yo'qolgan son bo'ladi
+//     return expectedSum - actualSum;
+// }
+
+// // Misol uchun
+// console.log(missingNumber([3, 0, 1])); // 2
+// console.log(missingNumber([0, 1])); // 2
+// console.log(missingNumber([9,6,4,2,3,5,7,0,1])); 
 
 
 
