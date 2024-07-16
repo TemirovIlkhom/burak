@@ -1,3 +1,21 @@
+function countOdds(num: number): number {
+    let count = 0;
+
+    // 0 dan num gacha bo'lgan sonlar orasida toq sonlarni hisoblash
+    for (let i = 0; i <= num; i++) {
+        if (i % 2 !== 0) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+// Misol uchun
+console.log("U-TASK:",countOdds(11)); // 6 ta toq son: 1, 3, 5, 7, 9, 11
+
+
+
 function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
     // Birlashtirilgan array va indexlar uchun boshlang'ich qiymatlarni belgilaymiz
     const mergedArray: number[] = [];
