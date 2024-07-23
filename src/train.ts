@@ -1,58 +1,95 @@
-function countOdds(num: number): number {
+function countOccurrences(obj: Record<string, any>, key: string): number {
     let count = 0;
 
-    // 0 dan num gacha bo'lgan sonlar orasida toq sonlarni hisoblash
-    for (let i = 0; i <= num; i++) {
-        if (i % 2 !== 0) {
-            count++;
+    function recursiveCount(innerObj: Record<string, any>) {
+        for (const k in innerObj) {
+            if (k === key) {
+                count++;
+            }
+            if (typeof innerObj[k] === 'object' && innerObj[k] !== null) {
+                recursiveCount(innerObj[k]);
+            }
         }
     }
 
+    recursiveCount(obj);
     return count;
 }
 
-// Misol uchun
-console.log("U-TASK:",countOdds(11)); // 6 ta toq son: 1, 3, 5, 7, 9, 11
+// Misol uchun foydalanish:
+const obj = {model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}};
+const occurrences = countOccurrences(obj, 'model');
+console.log("X-TASK",occurrences);
 
 
-
-function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
-    // Birlashtirilgan array va indexlar uchun boshlang'ich qiymatlarni belgilaymiz
-    const mergedArray: number[] = [];
-    let i = 0;
-    let j = 0;
-
-    // Ikkala arraydagi elementlarni solishtirib, kichikroq elementni mergedArray ga qo'shamiz
-    while (i < arr1.length && j < arr2.length) {
-        if (arr1[i] < arr2[j]) {
-            mergedArray.push(arr1[i]);
-            i++;
-        } else {
-            mergedArray.push(arr2[j]);
-            j++;
-        }
+function chunkArray<T>(array: T[], chunkSize: number): T[][] {
+    const result: T[][] = [];
+    for (let i = 0; i < array.length; i += chunkSize) {
+        result.push(array.slice(i, i + chunkSize));
     }
-
-    // Agar arr1 da qolgan elementlar bo'lsa, ularni mergedArray ga qo'shamiz
-    while (i < arr1.length) {
-        mergedArray.push(arr1[i]);
-        i++;
-    }
-
-    // Agar arr2 da qolgan elementlar bo'lsa, ularni mergedArray ga qo'shamiz
-    while (j < arr2.length) {
-        mergedArray.push(arr2[j]);
-        j++;
-    }
-
-    return mergedArray;
+    return result;
 }
 
-// Misol uchun
-const array1 = [0, 3, 4, 31];
-const array2 = [4, 6, 30];
-const result = mergeSortedArrays(array1, array2);
-console.log("T-tack",result); // [0, 3, 4, 4, 6, 30, 31]
+// Misol uchun foydalanish:
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const chunked = chunkArray(arr, 3);
+console.log("W-TASK",chunked);
+
+// function countOdds(num: number): number {
+//     let count = 0;
+
+//     // 0 dan num gacha bo'lgan sonlar orasida toq sonlarni hisoblash
+//     for (let i = 0; i <= num; i++) {
+//         if (i % 2 !== 0) {
+//             count++;
+//         }
+//     }
+
+//     return count;
+// }
+
+// // Misol uchun
+// console.log("U-TASK:",countOdds(11));
+
+
+
+// function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
+//     // Birlashtirilgan array va indexlar uchun boshlang'ich qiymatlarni belgilaymiz
+//     const mergedArray: number[] = [];
+//     let i = 0;
+//     let j = 0;
+
+//     // Ikkala arraydagi elementlarni solishtirib, kichikroq elementni mergedArray ga qo'shamiz
+//     while (i < arr1.length && j < arr2.length) {
+//         if (arr1[i] < arr2[j]) {
+//             mergedArray.push(arr1[i]);
+//             i++;
+//         } else {
+//             mergedArray.push(arr2[j]);
+//             j++;
+//         }
+//     }
+
+//     // Agar arr1 da qolgan elementlar bo'lsa, ularni mergedArray ga qo'shamiz
+//     while (i < arr1.length) {
+//         mergedArray.push(arr1[i]);
+//         i++;
+//     }
+
+//     // Agar arr2 da qolgan elementlar bo'lsa, ularni mergedArray ga qo'shamiz
+//     while (j < arr2.length) {
+//         mergedArray.push(arr2[j]);
+//         j++;
+//     }
+
+//     return mergedArray;
+// }
+
+// // Misol uchun
+// const array1 = [0, 3, 4, 31];
+// const array2 = [4, 6, 30];
+// const result = mergeSortedArrays(array1, array2);
+// console.log("T-tack",result); 
 
 
 // function missingNumber(nums: number[]): number {
