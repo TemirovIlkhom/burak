@@ -40,33 +40,62 @@ class MemberService {
         }           
     };
 
-    public async login(input: LoginInput): Promise<Member> {
-        // TODO: Consider member status later 
-        const member = await this.memberModel
-        .findOne(
-          {memberNick: input.memberNick, memberStatus: { $en: MemberStatus.DELETE } }, 
-          {memberNick: 1, memberPassword: 1, memberStatus: 1})
-        .exec();
-  if(!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
-  else if (member.memberStatus === MemberStatus.BLOCK) {
-    throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER);
-  };
+  //   public async login(input: LoginInput): Promise<Member> {
+  //       const member = await this.memberModel
+  //       .findOne(
+  //         {memberNick: input.memberNick, memberStatus: { $en: MemberStatus.DELETE } }, 
+  //         {memberNick: 1, memberPassword: 1, memberStatus: 1})
+  //       .exec();
+  // if(!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
+  // else if (member.memberStatus === MemberStatus.BLOCK) {
+  //   throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER);
+  // };
 
-  const isMatch = await bcrypt.compare(
-    input.memberPassword,
-    member.memberPassword
-  );
+  // const isMatch = await bcrypt.compare(
+  //   input.memberPassword,
+  //   member.memberPassword
+  // );
 
-  if(!isMatch) {
-    throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
-  };
+  // if(!isMatch) {
+  //   throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
+  // };
 
-  return await this.memberModel
-  .findById(member._id)
-  .lean()
-  .exec();
-        
+  // return await this.memberModel
+  // .findById(member._id)
+  // .lean()
+  // .exec();    
+  // }
+
+  public async login(input: LoginInput): Promise<Member> {
+    const member = await this.memberModel
+      .findOne(
+        {
+          memberNick: input.memberNick,
+          memberStatus: { $ne: MemberStatus.DELETE },
+        }, //
+        { memberNick: 1, memberPassword: 1, memberStatus: 1 }
+      )
+      .exec();
+
+    if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
+    else if (member.memberStatus === MemberStatus.BLOCK) {
+      throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER);
     }
+
+    const isMatch = await bcrypt.compare(
+      input.memberPassword,
+      member.memberPassword
+    );
+    // const isMatch = input.memberPassword === member.memberPassword;
+    if (!isMatch) {
+      throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
+    }
+
+    return (await this.memberModel
+      .findById(member._id)
+      .lean()
+      .exec()) as Member;
+  }
 
     public async getMemberDetail(member: Member): Promise<Member> {
       const memberId = shopeIntoMongooseObjectId(member._id);
