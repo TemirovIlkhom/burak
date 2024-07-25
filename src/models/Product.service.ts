@@ -21,7 +21,7 @@ constructor() {
 // SPA
 
 public async getProducts(inquiry: ProductInquiry): Promise<Product[]> {
-    const match: T = { ProductStatus: ProductStatus.PROCESS };
+    const match: T = { productStatus: ProductStatus.PROCESS };
 
     if ( inquiry.productCollection)
         match.productCollection = inquiry.productCollection;
