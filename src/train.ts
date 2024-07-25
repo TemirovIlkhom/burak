@@ -1,39 +1,51 @@
-function countOccurrences(obj: Record<string, any>, key: string): number {
-    let count = 0;
-
-    function recursiveCount(innerObj: Record<string, any>) {
-        for (const k in innerObj) {
-            if (k === key) {
-                count++;
-            }
-            if (typeof innerObj[k] === 'object' && innerObj[k] !== null) {
-                recursiveCount(innerObj[k]);
-            }
-        }
-    }
-
-    recursiveCount(obj);
-    return count;
+function findIntersection<T>(array1: T[], array2: T[]): T[] {
+    const set1 = new Set(array1);
+    const set2 = new Set(array2);
+    const intersection = Array.from(set1).filter(item => set2.has(item));
+    return intersection;
 }
 
-// Misol uchun foydalanish:
-const obj = {model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}};
-const occurrences = countOccurrences(obj, 'model');
-console.log("X-TASK",occurrences);
+// Misol
+const result = findIntersection([1, 2, 3], [3, 2, 0]);
+console.log(result); // [2, 3]
 
 
-function chunkArray<T>(array: T[], chunkSize: number): T[][] {
-    const result: T[][] = [];
-    for (let i = 0; i < array.length; i += chunkSize) {
-        result.push(array.slice(i, i + chunkSize));
-    }
-    return result;
-}
+// function countOccurrences(obj: Record<string, any>, key: string): number {
+//     let count = 0;
 
-// Misol uchun foydalanish:
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const chunked = chunkArray(arr, 3);
-console.log("W-TASK",chunked);
+//     function recursiveCount(innerObj: Record<string, any>) {
+//         for (const k in innerObj) {
+//             if (k === key) {
+//                 count++;
+//             }
+//             if (typeof innerObj[k] === 'object' && innerObj[k] !== null) {
+//                 recursiveCount(innerObj[k]);
+//             }
+//         }
+//     }
+
+//     recursiveCount(obj);
+//     return count;
+// }
+
+// // Misol uchun foydalanish:
+// const obj = {model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}};
+// const occurrences = countOccurrences(obj, 'model');
+// console.log("X-TASK",occurrences);
+
+
+// function chunkArray<T>(array: T[], chunkSize: number): T[][] {
+//     const result: T[][] = [];
+//     for (let i = 0; i < array.length; i += chunkSize) {
+//         result.push(array.slice(i, i + chunkSize));
+//     }
+//     return result;
+// }
+
+// // Misol uchun foydalanish:
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// const chunked = chunkArray(arr, 3);
+// console.log("W-TASK",chunked);
 
 // function countOdds(num: number): number {
 //     let count = 0;
