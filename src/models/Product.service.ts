@@ -5,9 +5,9 @@ import { T } from "../libs/types/common";
 import { Product, ProductInput, ProductInquiry, ProductUpdateInput } from "../libs/types/product";
 import ProductModel from "../schema/Product.model";
 import { ObjectId } from "mongoose";
-import ViewService from "./view.service";
 import { ViewInput } from "../libs/types/view";
 import { ViewGroup } from "../libs/enums/view.enum";
+import ViewService from "./View.service";
 
 class ProductService {
 private readonly productModel;
@@ -30,7 +30,7 @@ public async getProducts(inquiry: ProductInquiry): Promise<Product[]> {
     }
 
     const sort: T = 
-    inquiry.order === "ProductPrice" ? { [inquiry.order]: 1 } : { [inquiry.order]: -1 };
+    inquiry.order === "productPrice" ? { [inquiry.order]: 1 } : { [inquiry.order]: -1 };
 
     const result = await this.productModel
     .aggregate([
