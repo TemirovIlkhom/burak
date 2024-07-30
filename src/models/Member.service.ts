@@ -12,6 +12,25 @@ class MemberService {
         this.memberModel = MemberModel;
     }
 
+    public async addUserPoint( 
+      member: Member,
+      point: number
+    ): Promise<Member> {
+      const memberId = shopeIntoMongooseObjectId(member._id);
+
+      return await this.memberModel
+      .findOneAndUpdate(
+        {
+          _id: memberId,
+          memberType: MemberType.USER,
+          memberStatus: MemberStatus.ACTIVE
+        },
+        { $inc: { memberPoints: point } },
+        { new: true }
+      )
+      .exec();
+    }
+
     //** SPA */
 
     public async getRestaurant(): Promise<Member> {
