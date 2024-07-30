@@ -1,13 +1,32 @@
-function findIntersection<T>(array1: T[], array2: T[]): T[] {
-    const set1 = new Set(array1);
-    const set2 = new Set(array2);
-    const intersection = Array.from(set1).filter(item => set2.has(item));
-    return intersection;
+function randomBetween(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Misol
-const result = findIntersection([1, 2, 3], [3, 2, 0]);
-console.log(result); // [2, 3]
+console.log("ZB-TASK:",randomBetween(1, 100)); // return 1 va 100 orasidagi random son
+
+
+function sumEvens(numbers: number[]): number {
+    return numbers.reduce((sum, num) => {
+        if (num % 2 === 0) {
+            return sum + num;
+        }
+        return sum;
+    }, 0);
+}
+
+console.log("Z-TASK:",sumEvens([4, 5, 6, 7, 8]));
+
+
+// function findIntersection<T>(array1: T[], array2: T[]): T[] {
+//     const set1 = new Set(array1);
+//     const set2 = new Set(array2);
+//     const intersection = Array.from(set1).filter(item => set2.has(item));
+//     return intersection;
+// }
+
+// // Misol
+// const result = findIntersection([1, 2, 3], [3, 2, 0]);
+// console.log(result);
 
 
 // function countOccurrences(obj: Record<string, any>, key: string): number {
