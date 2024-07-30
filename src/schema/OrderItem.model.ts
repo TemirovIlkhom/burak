@@ -26,4 +26,4 @@ const orderItemSchema = new Schema(
 { timestamps: true, collection: "orderItems" } // updateAt, createdAt
 );
 
-export default mongoose.model("Order", orderItemSchema);
+export default mongoose.model("OrderItem", orderItemSchema);
