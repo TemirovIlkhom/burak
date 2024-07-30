@@ -1,5 +1,5 @@
 import { Member } from "../libs/types/member";
-import { Order, OrderItem, OrderItemInput } from "../libs/types/order";
+import { Order, OrderInquiry, OrderItem, OrderItemInput } from "../libs/types/order";
 import OrderModel from "../schema/Order.model";
 import OrderItemModel from "../schema/OrderItem.model";
 import { shopeIntoMongooseObjectId } from "../libs/config";
@@ -15,7 +15,10 @@ class OrderService {
         this.orderItemModel = OrderItemModel;
     }
 
-    public async createOrder(member: Member, input: OrderItemInput []): Promise<Order> {
+    public async createOrder(
+        member: Member, 
+        input: OrderItemInput[]
+    ): Promise<Order> {
         const memberId = shopeIntoMongooseObjectId(member._id);
         const amount = input.reduce((accumulator: number, item: OrderItemInput) => {
             return accumulator + item.itemPrice * item.itemQuantity;
@@ -32,6 +35,7 @@ class OrderService {
             const orderId = newOrder._id;
             console.log("orderId:", newOrder._id);
             await this.recordOrderItem(orderId, input);
+
             return newOrder;
         } catch (err) {
             console.error("Error, model:createOrder:", err);
@@ -39,16 +43,54 @@ class OrderService {
         }
     }
 
-    private async recordOrderItem(orderId: ObjectId, input: OrderItemInput[]): Promise<void> {
+    private async recordOrderItem(
+        orderId: ObjectId, 
+        input: OrderItemInput[]
+    ): Promise<void> {
         const promisedList = input.map( async (item: OrderItemInput) => {
             item.orderId = orderId;
             item.productId = shopeIntoMongooseObjectId(item.productId);
             await this.orderItemModel.create(item);
             return "INSERTED";
         })
+ 
+        const orderItemsState = await Promise.all(promisedList);
+        console.log("orderItemsState:", orderItemsState);
+    }
+ 
+    public async getMyOrders(
+        member: Member,
+        inquiry: OrderInquiry
+    ): Promise<Order[]> {
+        const memberId = shopeIntoMongooseObjectId(member._id);
+        const matches = { memberId: memberId, orderStatus: inquiry.orderStatus };
 
-        const orderItemState = await Promise.all(promisedList);
-        console.log("orderItemState:", orderItemState);
+        const result = await this.orderModel
+        .aggregate([
+            {$match: matches},
+            {$sort: {updateAt: -1}},
+            {$skip: (inquiry.page - 1) * inquiry.limit},
+            {$limit: inquiry.limit},
+            {$lookup: {
+                from: "orderItems",
+                localField: "_id",
+                foreignField: "orderId",
+                as: "orderItems",
+            },
+        },
+            {
+                $lookup: {
+                    from: "products",
+                    localField: "orderItems.productId",
+                    foreignField: "_id",
+                    as: "productData"
+                },
+            },
+        ])
+        .exec();
+        if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+        return result;
     }
 }
 
