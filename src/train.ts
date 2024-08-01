@@ -1,20 +1,27 @@
-function randomBetween(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+function celsiusToFahrenheit(celsius: number): number {
+    return (celsius * 9/5) + 32;
 }
 
-console.log("ZB-TASK:",randomBetween(1, 100)); // return 1 va 100 orasidagi random son
+console.log("ZC-TASK:",celsiusToFahrenheit(-10)); 
 
 
-function sumEvens(numbers: number[]): number {
-    return numbers.reduce((sum, num) => {
-        if (num % 2 === 0) {
-            return sum + num;
-        }
-        return sum;
-    }, 0);
-}
+// function randomBetween(min: number, max: number): number {
+//     return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
 
-console.log("Z-TASK:",sumEvens([4, 5, 6, 7, 8]));
+// console.log("ZB-TASK:",randomBetween(1, 100)); // return 1 va 100 orasidagi random son
+
+
+// function sumEvens(numbers: number[]): number {
+//     return numbers.reduce((sum, num) => {
+//         if (num % 2 === 0) {
+//             return sum + num;
+//         }
+//         return sum;
+//     }, 0);
+// }
+
+// console.log("Z-TASK:",sumEvens([4, 5, 6, 7, 8]));
 
 
 // function findIntersection<T>(array1: T[], array2: T[]): T[] {
