@@ -1,8 +1,20 @@
-function celsiusToFahrenheit(celsius: number): number {
-    return (celsius * 9/5) + 32;
+function changeNumberInArray(target: number, array: number[], newValue: number): number[] {
+    const index = array.indexOf(target);
+    if (index !== -1) {
+        array[index] = newValue;
+    }
+    return array;
 }
 
-console.log("ZC-TASK:",celsiusToFahrenheit(-10)); 
+const result = changeNumberInArray(1, [1, 3, 7, 2], 2);
+console.log(result);
+
+
+// function celsiusToFahrenheit(celsius: number): number {
+//     return (celsius * 9/5) + 32;
+// }
+
+// console.log("ZC-TASK:",celsiusToFahrenheit(-10)); 
 
 
 // function randomBetween(min: number, max: number): number {
