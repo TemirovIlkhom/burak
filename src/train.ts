@@ -1,13 +1,25 @@
-function changeNumberInArray(target: number, array: number[], newValue: number): number[] {
-    const index = array.indexOf(target);
-    if (index !== -1) {
-        array[index] = newValue;
-    }
-    return array;
+function removeDuplicate(str: string): string {
+    // Stringni massivga aylantirib, harflarni Set ichiga joylaymiz
+    const uniqueChars = new Set(str);
+    
+    // Setni massivga aylantirib, uni stringga aylantiramiz
+    return [...uniqueChars].join('');
 }
 
-const result = changeNumberInArray(1, [1, 3, 7, 2], 2);
-console.log(result);
+// Masalan:
+console.log("ZE-TASK:",removeDuplicate('stringg')); 
+
+
+// function changeNumberInArray(target: number, array: number[], newValue: number): number[] {
+//     const index = array.indexOf(target);
+//     if (index !== -1) {
+//         array[index] = newValue;
+//     }
+//     return array;
+// }
+
+// const result = changeNumberInArray(1, [1, 3, 7, 2], 2);
+// console.log(result);
 
 
 // function celsiusToFahrenheit(celsius: number): number {
