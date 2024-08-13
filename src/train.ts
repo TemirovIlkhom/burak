@@ -1,13 +1,28 @@
-function removeDuplicate(str: string): string {
-    // Stringni massivga aylantirib, harflarni Set ichiga joylaymiz
-    const uniqueChars = new Set(str);
-    
-    // Setni massivga aylantirib, uni stringga aylantiramiz
-    return [...uniqueChars].join('');
+function capitalizeWords(sentence: string): string {
+    return sentence
+        .split(' ') // gapni so'zlarga bo'lib olamiz
+        .map(word => {
+            if (word.length > 2) { // agar so'z uzunligi 2 harfdan ortiq bo'lsa
+                return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(); // birinchi harfni katta qilamiz
+            }
+            return word; // aks holda, so'zni o'zgartirmasdan qoldiramiz
+        })
+        .join(' '); // so'zlarni qaytadan birlashtiramiz
 }
 
-// Masalan:
-console.log("ZE-TASK:",removeDuplicate('stringg')); 
+console.log(capitalizeWords('name should be a string')); 
+
+
+// function removeDuplicate(str: string): string {
+//     // Stringni massivga aylantirib, harflarni Set ichiga joylaymiz
+//     const uniqueChars = new Set(str);
+    
+//     // Setni massivga aylantirib, uni stringga aylantiramiz
+//     return [...uniqueChars].join('');
+// }
+
+// // Masalan:
+// console.log("ZE-TASK:",removeDuplicate('stringg')); 
 
 
 // function changeNumberInArray(target: number, array: number[], newValue: number): number[] {
