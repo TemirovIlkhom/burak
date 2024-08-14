@@ -1,16 +1,42 @@
-function capitalizeWords(sentence: string): string {
-    return sentence
-        .split(' ') // gapni so'zlarga bo'lib olamiz
-        .map(word => {
-            if (word.length > 2) { // agar so'z uzunligi 2 harfdan ortiq bo'lsa
-                return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(); // birinchi harfni katta qilamiz
-            }
-            return word; // aks holda, so'zni o'zgartirmasdan qoldiramiz
-        })
-        .join(' '); // so'zlarni qaytadan birlashtiramiz
+function convertToSnakeCase(str: string): string {
+    return str
+        .trim() // String boshidagi va oxiridagi bo'shliqlarni olib tashlaydi
+        .toLowerCase() // Stringni kichik harflarga o'zgartiradi
+        .replace(/\s+/g, '_'); // Bo'shliqlarni "_" bilan almashtiradi
 }
 
-console.log(capitalizeWords('name should be a string')); 
+const result = convertToSnakeCase('name should be a string');
+console.log("Task-ZG:",result); 
+
+function findDisappearedNumbers(arr: number[]): number[] {
+    const max = Math.max(...arr); // Arraydagi eng katta raqamni topish
+    const result2: number[] = [];
+
+    for (let i = 1; i <= max; i++) {
+        if (!arr.includes(i)) {
+            result2.push(i); // Tushib qolgan raqamni natija arrayiga qo'shish
+        }
+    }
+
+    return result2;
+}
+
+const result2 = findDisappearedNumbers([1, 3, 4, 7]);
+console.log("Task-ZH",2); 
+
+// function capitalizeWords(sentence: string): string {
+//     return sentence
+//         .split(' ') // gapni so'zlarga bo'lib olamiz
+//         .map(word => {
+//             if (word.length > 2) { // agar so'z uzunligi 2 harfdan ortiq bo'lsa
+//                 return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(); // birinchi harfni katta qilamiz
+//             }
+//             return word; // aks holda, so'zni o'zgartirmasdan qoldiramiz
+//         })
+//         .join(' '); // so'zlarni qaytadan birlashtiramiz
+// }
+
+// console.log(capitalizeWords('name should be a string')); 
 
 
 // function removeDuplicate(str: string): string {
