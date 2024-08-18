@@ -1,28 +1,42 @@
-function convertToSnakeCase(str: string): string {
-    return str
-        .trim() // String boshidagi va oxiridagi bo'shliqlarni olib tashlaydi
-        .toLowerCase() // Stringni kichik harflarga o'zgartiradi
-        .replace(/\s+/g, '_'); // Bo'shliqlarni "_" bilan almashtiradi
+function delayHelloWorld(message: string): Promise<string> {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(message);
+        }, 3000); // 3 soniya kechikish
+    });
 }
 
-const result = convertToSnakeCase('name should be a string');
-console.log("Task-ZG:",result); 
+// Funksiyani chaqirish va natijani olish
+delayHelloWorld("Hello World").then((result) => {
+    console.log(result); // 3 soniyadan keyin "Hello World" ni konsolda chiqaradi
+});
 
-function findDisappearedNumbers(arr: number[]): number[] {
-    const max = Math.max(...arr); // Arraydagi eng katta raqamni topish
-    const result2: number[] = [];
 
-    for (let i = 1; i <= max; i++) {
-        if (!arr.includes(i)) {
-            result2.push(i); // Tushib qolgan raqamni natija arrayiga qo'shish
-        }
-    }
+// function convertToSnakeCase(str: string): string {
+//     return str
+//         .trim() // String boshidagi va oxiridagi bo'shliqlarni olib tashlaydi
+//         .toLowerCase() // Stringni kichik harflarga o'zgartiradi
+//         .replace(/\s+/g, '_'); // Bo'shliqlarni "_" bilan almashtiradi
+// }
 
-    return result2;
-}
+// const result = convertToSnakeCase('name should be a string');
+// console.log("Task-ZG:",result); 
 
-const result2 = findDisappearedNumbers([1, 3, 4, 7]);
-console.log("Task-ZH",2); 
+// function findDisappearedNumbers(arr: number[]): number[] {
+//     const max = Math.max(...arr); // Arraydagi eng katta raqamni topish
+//     const result2: number[] = [];
+
+//     for (let i = 1; i <= max; i++) {
+//         if (!arr.includes(i)) {
+//             result2.push(i); // Tushib qolgan raqamni natija arrayiga qo'shish
+//         }
+//     }
+
+//     return result2;
+// }
+
+// const result2 = findDisappearedNumbers([1, 3, 4, 7]);
+// console.log("Task-ZH",2); 
 
 // function capitalizeWords(sentence: string): string {
 //     return sentence
