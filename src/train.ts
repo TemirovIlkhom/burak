@@ -1,15 +1,28 @@
-function delayHelloWorld(message: string): Promise<string> {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(message);
-        }, 3000); // 3 soniya kechikish
-    });
+function reduceNestedArray(arr: any[]): number {
+    return arr.reduce((sum, value) => {
+        if (Array.isArray(value)) {
+            return sum + reduceNestedArray(value);
+        }
+        return sum + value;
+    }, 0);
 }
 
-// Funksiyani chaqirish va natijani olish
-delayHelloWorld("Hello World").then((result) => {
-    console.log(result); // 3 soniyadan keyin "Hello World" ni konsolda chiqaradi
-});
+const result = reduceNestedArray([1, [1, 2, [4]]]);
+console.log("ZJ-TASK",result);
+
+
+// function delayHelloWorld(message: string): Promise<string> {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve(message);
+//         }, 3000); // 3 soniya kechikish
+//     });
+// }
+
+// // Funksiyani chaqirish va natijani olish
+// delayHelloWorld("Hello World").then((result) => {
+//     console.log(result); 
+// });
 
 
 // function convertToSnakeCase(str: string): string {
