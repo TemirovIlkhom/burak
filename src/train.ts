@@ -1,17 +1,27 @@
-function printNumbers() {
-    let counter = 1;
-
-    const intervalId = setInterval(() => {
-        console.log(counter);
-        counter++;
-
-        if (counter > 5) {
-            clearInterval(intervalId);
-        }
-    }, 1000);
+function stringToKebab(str: string): string {
+    return str
+        .replace(/([a-z])([A-Z])/g, '$1-$2') // Kichik va katta harflar orasiga tire qo'yish
+        .replace(/\s+/g, '-') // Bo'sh joylarni tire bilan almashtirish
+        .toLowerCase(); // Hamma harflarni kichik harfga o'zgartirish
 }
 
-printNumbers();
+console.log("ZL-TASK",stringToKebab("I love Kebab")); 
+
+
+// function printNumbers() {
+//     let counter = 1;
+
+//     const intervalId = setInterval(() => {
+//         console.log(counter);
+//         counter++;
+
+//         if (counter > 5) {
+//             clearInterval(intervalId);
+//         }
+//     }, 1000);
+// }
+
+// printNumbers();
 
 
 // function reduceNestedArray(arr: any[]): number {
