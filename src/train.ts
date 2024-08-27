@@ -1,3 +1,12 @@
+function reverseInteger(num: number): number {
+    const reversedString = num.toString().split('').reverse().join('');
+    return parseInt(reversedString, 10);
+}
+
+const result = reverseInteger(123456789);
+console.log("ZM-TASK",result);
+
+
 function stringToKebab(str: string): string {
     return str
         .replace(/([a-z])([A-Z])/g, '$1-$2') // Kichik va katta harflar orasiga tire qo'yish
