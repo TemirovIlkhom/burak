@@ -1,20 +1,31 @@
-function reverseInteger(num: number): number {
-    const reversedString = num.toString().split('').reverse().join('');
-    return parseInt(reversedString, 10);
+function rotateArray(arr: any[], index: number): any[] {
+    const partToRotate = arr.slice(index).reverse();
+    const remainingPart = arr.slice(0, index);
+    return partToRotate.concat(remainingPart);
 }
 
-const result = reverseInteger(123456789);
-console.log("ZM-TASK",result);
+// Misol uchun ishlatish:
+const result = rotateArray([1, 2, 3, 4, 5, 6], 3);
+console.log("ZN-Task",result);
 
 
-function stringToKebab(str: string): string {
-    return str
-        .replace(/([a-z])([A-Z])/g, '$1-$2') // Kichik va katta harflar orasiga tire qo'yish
-        .replace(/\s+/g, '-') // Bo'sh joylarni tire bilan almashtirish
-        .toLowerCase(); // Hamma harflarni kichik harfga o'zgartirish
-}
+// function reverseInteger(num: number): number {
+//     const reversedString = num.toString().split('').reverse().join('');
+//     return parseInt(reversedString, 10);
+// }
 
-console.log("ZL-TASK",stringToKebab("I love Kebab")); 
+// const result = reverseInteger(123456789);
+// console.log("ZM-TASK",result);
+
+
+// function stringToKebab(str: string): string {
+//     return str
+//         .replace(/([a-z])([A-Z])/g, '$1-$2') // Kichik va katta harflar orasiga tire qo'yish
+//         .replace(/\s+/g, '-') // Bo'sh joylarni tire bilan almashtirish
+//         .toLowerCase(); // Hamma harflarni kichik harfga o'zgartirish
+// }
+
+// console.log("ZL-TASK",stringToKebab("I love Kebab")); 
 
 
 // function printNumbers() {
