@@ -1,3 +1,50 @@
+function areParenthesesBalanced(str: string): boolean {
+    let balance = 0;
+
+    for (let char of str) {
+        if (char === '(') {
+            balance++;  // Ochilgan qavs sonini oshiramiz
+        } else if (char === ')') {
+            balance--;  // Yopilgan qavs sonini kamaytiramiz
+
+            // Agar balans manfiy bo'lsa, qavslar noto'g'ri joylashgan bo'ladi
+            if (balance < 0) {
+                return false;
+            }
+        }
+    }
+
+    // Agar balans 0 bo'lsa, qavslar balansda; aks holda, balansda emas
+    return balance === 0;
+}
+
+// Funksiyani test qilamiz
+console.log(areParenthesesBalanced("string()ichida(qavslar)soni()balansda")); 
+console.log(areParenthesesBalanced("bu misolda((qavslar)balansda emas"));     
+
+
+// function findDuplicates(arr: number[]): number[] {
+//     const elementCount: { [key: number]: number } = {};
+//     const duplicates: number[] = [];
+
+//     // Arraydagi har bir elementni sanaymiz
+//     arr.forEach((num) => {
+//         elementCount[num] = (elementCount[num] || 0) + 1;
+//     });
+
+//     // 2 marta qaytarilgan elementlarni yig'amiz
+//     for (const key in elementCount) {
+//         if (elementCount[key] === 2) {
+//             duplicates.push(Number(key));
+//         }
+//     }
+
+//     return duplicates;
+// }
+
+// console.log(findDuplicates([1, 2, 3, 4, 5, 4, 3, 4])); 
+
+
 function rotateArray(arr: any[], index: number): any[] {
     const partToRotate = arr.slice(index).reverse();
     const remainingPart = arr.slice(0, index);
