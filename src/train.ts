@@ -1,26 +1,47 @@
-function areParenthesesBalanced(str: string): boolean {
-    let balance = 0;
+function countNumbersAndLetters(input: string): { number: number, letter: number } {
+    let numberCount = 0;
+    let letterCount = 0;
 
-    for (let char of str) {
-        if (char === '(') {
-            balance++;  // Ochilgan qavs sonini oshiramiz
-        } else if (char === ')') {
-            balance--;  // Yopilgan qavs sonini kamaytiramiz
-
-            // Agar balans manfiy bo'lsa, qavslar noto'g'ri joylashgan bo'ladi
-            if (balance < 0) {
-                return false;
-            }
+    for (let char of input) {
+        if (char >= '0' && char <= '9') {
+            numberCount++;
+        } else if ((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')) {
+            letterCount++;
         }
     }
 
-    // Agar balans 0 bo'lsa, qavslar balansda; aks holda, balansda emas
-    return balance === 0;
+    return {
+        number: numberCount,
+        letter: letterCount
+    };
 }
 
-// Funksiyani test qilamiz
-console.log(areParenthesesBalanced("string()ichida(qavslar)soni()balansda")); 
-console.log(areParenthesesBalanced("bu misolda((qavslar)balansda emas"));     
+console.log("ZQ-TASK",countNumbersAndLetters("string152%\¥")); 
+
+
+// function areParenthesesBalanced(str: string): boolean {
+//     let balance = 0;
+
+//     for (let char of str) {
+//         if (char === '(') {
+//             balance++;  // Ochilgan qavs sonini oshiramiz
+//         } else if (char === ')') {
+//             balance--;  // Yopilgan qavs sonini kamaytiramiz
+
+//             // Agar balans manfiy bo'lsa, qavslar noto'g'ri joylashgan bo'ladi
+//             if (balance < 0) {
+//                 return false;
+//             }
+//         }
+//     }
+
+//     // Agar balans 0 bo'lsa, qavslar balansda; aks holda, balansda emas
+//     return balance === 0;
+// }
+
+// // Funksiyani test qilamiz
+// console.log(areParenthesesBalanced("string()ichida(qavslar)soni()balansda")); 
+// console.log(areParenthesesBalanced("bu misolda((qavslar)balansda emas"));     
 
 
 // function findDuplicates(arr: number[]): number[] {
@@ -45,15 +66,15 @@ console.log(areParenthesesBalanced("bu misolda((qavslar)balansda emas"));
 // console.log(findDuplicates([1, 2, 3, 4, 5, 4, 3, 4])); 
 
 
-function rotateArray(arr: any[], index: number): any[] {
-    const partToRotate = arr.slice(index).reverse();
-    const remainingPart = arr.slice(0, index);
-    return partToRotate.concat(remainingPart);
-}
+// function rotateArray(arr: any[], index: number): any[] {
+//     const partToRotate = arr.slice(index).reverse();
+//     const remainingPart = arr.slice(0, index);
+//     return partToRotate.concat(remainingPart);
+// }
 
-// Misol uchun ishlatish:
-const result = rotateArray([1, 2, 3, 4, 5, 6], 3);
-console.log("ZN-Task",result);
+// // Misol uchun ishlatish:
+// const result = rotateArray([1, 2, 3, 4, 5, 6], 3);
+// console.log("ZN-Task",result);
 
 
 // function reverseInteger(num: number): number {
