@@ -1,13 +1,21 @@
-function countNumbersLettersAndSymbols(input: string): { number: number, letter: number, symbol: number } {
+
+
+function countNumbersLettersSymbolsAndEmojis(input: string): { number: number, letter: number, symbol: number, emoji: number } {
     let numberCount = 0;
     let letterCount = 0;
     let symbolCount = 0;
+    let emojiCount = 0;
+
+    // Emoji'larni aniqlash uchun RegExp
+    const emojiRegex = /\p{Emoji}/u;
 
     for (let char of input) {
         if (char >= '0' && char <= '9') {
             numberCount++;
         } else if ((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')) {
             letterCount++;
+        } else if (emojiRegex.test(char)) {  // Emoji'ni tekshirish
+            emojiCount++;
         } else {
             symbolCount++;
         }
@@ -16,11 +24,13 @@ function countNumbersLettersAndSymbols(input: string): { number: number, letter:
     return {
         number: numberCount,
         letter: letterCount,
-        symbol: symbolCount
+        symbol: symbolCount,
+        emoji: emojiCount
     };
 }
 
-console.log("ZQ-TASK", countNumbersLettersAndSymbols("strin454)%g152*(&%)*(&")); 
+console.log("ZQ-TASK", countNumbersLettersSymbolsAndEmojis("5v5hn4h68}[🥰🥳")); 
+
 
 
 
