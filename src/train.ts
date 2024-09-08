@@ -1,22 +1,27 @@
-function countNumbersAndLetters(input: string): { number: number, letter: number } {
+function countNumbersLettersAndSymbols(input: string): { number: number, letter: number, symbol: number } {
     let numberCount = 0;
     let letterCount = 0;
+    let symbolCount = 0;
 
     for (let char of input) {
         if (char >= '0' && char <= '9') {
             numberCount++;
         } else if ((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')) {
             letterCount++;
+        } else {
+            symbolCount++;
         }
     }
 
     return {
         number: numberCount,
-        letter: letterCount
+        letter: letterCount,
+        symbol: symbolCount
     };
 }
 
-console.log("ZQ-TASK",countNumbersAndLetters("string152%\¥")); 
+console.log("ZQ-TASK", countNumbersLettersAndSymbols("strin454)%g152*(&%)*(&")); 
+
 
 
 // function areParenthesesBalanced(str: string): boolean {
