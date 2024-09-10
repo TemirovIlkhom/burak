@@ -1,35 +1,60 @@
+function singleNumber(arr: number[]): number | undefined {
+    // Elementlarni necha marta uchraganini saqlash uchun obyekt yaratamiz
+    const countMap: { [key: number]: number } = {};
 
-
-function countNumbersLettersSymbolsAndEmojis(input: string): { number: number, letter: number, symbol: number, emoji: number } {
-    let numberCount = 0;
-    let letterCount = 0;
-    let symbolCount = 0;
-    let emojiCount = 0;
-
-    // Emoji'larni aniqlash uchun RegExp
-    const emojiRegex = /\p{Emoji}/u;
-
-    for (let char of input) {
-        if (char >= '0' && char <= '9') {
-            numberCount++;
-        } else if ((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')) {
-            letterCount++;
-        } else if (emojiRegex.test(char)) {  // Emoji'ni tekshirish
-            emojiCount++;
+    // Massivdagi har bir elementni hisoblash
+    for (let num of arr) {
+        if (countMap[num]) {
+            countMap[num]++;
         } else {
-            symbolCount++;
+            countMap[num] = 1;
         }
     }
 
-    return {
-        number: numberCount,
-        letter: letterCount,
-        symbol: symbolCount,
-        emoji: emojiCount
-    };
+    // Faqat 1 marta kelgan elementni qaytarish
+    for (let num of arr) {
+        if (countMap[num] === 1) {
+            return num;
+        }
+    }
+
+    // Agar bunday element topilmasa, undefined qaytaradi
+    return undefined;
 }
 
-console.log("ZQ-TASK", countNumbersLettersSymbolsAndEmojis("5v5hn4h68}[🥰🥳")); 
+console.log("ZR-TASK",singleNumber([4, 2, 1, 2, 1])); 
+
+
+// function countNumbersLettersSymbolsAndEmojis(input: string): { number: number, letter: number, symbol: number, emoji: number } {
+//     let numberCount = 0;
+//     let letterCount = 0;
+//     let symbolCount = 0;
+//     let emojiCount = 0;
+
+//     // Emoji'larni aniqlash uchun RegExp
+//     const emojiRegex = /\p{Emoji}/u;
+
+//     for (let char of input) {
+//         if (char >= '0' && char <= '9') {
+//             numberCount++;
+//         } else if ((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')) {
+//             letterCount++;
+//         } else if (emojiRegex.test(char)) {  // Emoji'ni tekshirish
+//             emojiCount++;
+//         } else {
+//             symbolCount++;
+//         }
+//     }
+
+//     return {
+//         number: numberCount,
+//         letter: letterCount,
+//         symbol: symbolCount,
+//         emoji: emojiCount
+//     };
+// }
+
+// console.log("ZQ-TASK", countNumbersLettersSymbolsAndEmojis("5v5hn4h68}[🥰🥳")); 
 
 
 
