@@ -1,28 +1,52 @@
-function singleNumber(arr: number[]): number | undefined {
-    // Elementlarni necha marta uchraganini saqlash uchun obyekt yaratamiz
-    const countMap: { [key: number]: number } = {};
+function firstUniqueCharIndex(s: string): number {
+    const charCount: { [key: string]: number } = {};
 
-    // Massivdagi har bir elementni hisoblash
-    for (let num of arr) {
-        if (countMap[num]) {
-            countMap[num]++;
-        } else {
-            countMap[num] = 1;
+    // Har bir belgini sanaymiz
+    for (let i = 0; i < s.length; i++) {
+        const char = s[i];
+        charCount[char] = (charCount[char] || 0) + 1;
+    }
+
+    // Birinchi marta bitta marta uchragan belgining indeksini topamiz
+    for (let i = 0; i < s.length; i++) {
+        if (charCount[s[i]] === 1) {
+            return i;
         }
     }
 
-    // Faqat 1 marta kelgan elementni qaytarish
-    for (let num of arr) {
-        if (countMap[num] === 1) {
-            return num;
-        }
-    }
-
-    // Agar bunday element topilmasa, undefined qaytaradi
-    return undefined;
+    return -1; // Agar hamma belgilar qaytarilgan bo'lsa
 }
 
-console.log("ZR-TASK",singleNumber([4, 2, 1, 2, 1])); 
+console.log(firstUniqueCharIndex("stamp")); 
+console.log(firstUniqueCharIndex("stress")); 
+console.log(firstUniqueCharIndex("aabbcc")); 
+
+
+// function singleNumber(arr: number[]): number | undefined {
+//     // Elementlarni necha marta uchraganini saqlash uchun obyekt yaratamiz
+//     const countMap: { [key: number]: number } = {};
+
+//     // Massivdagi har bir elementni hisoblash
+//     for (let num of arr) {
+//         if (countMap[num]) {
+//             countMap[num]++;
+//         } else {
+//             countMap[num] = 1;
+//         }
+//     }
+
+//     // Faqat 1 marta kelgan elementni qaytarish
+//     for (let num of arr) {
+//         if (countMap[num] === 1) {
+//             return num;
+//         }
+//     }
+
+//     // Agar bunday element topilmasa, undefined qaytaradi
+//     return undefined;
+// }
+
+// console.log("ZR-TASK",singleNumber([4, 2, 1, 2, 1])); 
 
 
 // function countNumbersLettersSymbolsAndEmojis(input: string): { number: number, letter: number, symbol: number, emoji: number } {
