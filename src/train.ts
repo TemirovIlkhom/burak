@@ -1,25 +1,47 @@
-function firstUniqueCharIndex(s: string): number {
-    const charCount: { [key: string]: number } = {};
-
-    // Har bir belgini sanaymiz
-    for (let i = 0; i < s.length; i++) {
-        const char = s[i];
-        charCount[char] = (charCount[char] || 0) + 1;
+function sumOfUnique(nums: number[]): number {
+    const numCount: { [key: number]: number } = {};
+    
+    // Array elementlarining chastotasini hisoblaymiz
+    for (let num of nums) {
+        numCount[num] = (numCount[num] || 0) + 1;
     }
-
-    // Birinchi marta bitta marta uchragan belgining indeksini topamiz
-    for (let i = 0; i < s.length; i++) {
-        if (charCount[s[i]] === 1) {
-            return i;
+    
+    // Faqat takrorlanmagan (chastotasi 1 ga teng) elementlarni yig'amiz
+    let sum = 0;
+    for (let num in numCount) {
+        if (numCount[num] === 1) {
+            sum += parseInt(num);
         }
     }
 
-    return -1; // Agar hamma belgilar qaytarilgan bo'lsa
+    return sum;
 }
 
-console.log(firstUniqueCharIndex("stamp")); 
-console.log(firstUniqueCharIndex("stress")); 
-console.log(firstUniqueCharIndex("aabbcc")); 
+console.log("ZT-TASK",sumOfUnique([1, 2, 3, 2])); 
+
+
+// function firstUniqueCharIndex(s: string): number {
+//     const charCount: { [key: string]: number } = {};
+
+//     // Har bir belgini sanaymiz
+//     for (let i = 0; i < s.length; i++) {
+//         const char = s[i];
+//         charCount[char] = (charCount[char] || 0) + 1;
+//     }
+
+//     // Birinchi marta bitta marta uchragan belgining indeksini topamiz
+//     for (let i = 0; i < s.length; i++) {
+//         if (charCount[s[i]] === 1) {
+//             return i;
+//         }
+//     }
+
+//     return -1; // Agar hamma belgilar qaytarilgan bo'lsa
+// }
+
+// console.log(firstUniqueCharIndex("stamp")); 
+// console.log(firstUniqueCharIndex("stress")); 
+// console.log(firstUniqueCharIndex("aabbcc")); 
 
 
 // function singleNumber(arr: number[]): number | undefined {
