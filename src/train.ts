@@ -1,23 +1,41 @@
-function sumOfUnique(nums: number[]): number {
-    const numCount: { [key: number]: number } = {};
-    
-    // Array elementlarining chastotasini hisoblaymiz
-    for (let num of nums) {
-        numCount[num] = (numCount[num] || 0) + 1;
-    }
-    
-    // Faqat takrorlanmagan (chastotasi 1 ga teng) elementlarni yig'amiz
-    let sum = 0;
-    for (let num in numCount) {
-        if (numCount[num] === 1) {
-            sum += parseInt(num);
-        }
+function areArraysEqual<T>(arr1: T[], arr2: T[]): boolean {
+    // Ikkala arrayni ham tartibga solamiz va ularning uzunligini solishtiramiz
+    if (arr1.length !== arr2.length) {
+        return false;
     }
 
-    return sum;
+    // Array elementlarini tartibga solamiz va solishtiramiz
+    const sortedArr1 = [...arr1].sort();
+    const sortedArr2 = [...arr2].sort();
+
+    return sortedArr1.every((value, index) => value === sortedArr2[index]);
 }
 
-console.log("ZT-TASK",sumOfUnique([1, 2, 3, 2])); 
+console.log(areArraysEqual([1, 2, 3], [3, 1, 2])); 
+console.log(areArraysEqual([1, 2, 3], [3, 1, 2, 1])); 
+console.log(areArraysEqual([1, 2, 3], [4, 1, 2])); 
+
+
+// function sumOfUnique(nums: number[]): number {
+//     const numCount: { [key: number]: number } = {};
+    
+//     // Array elementlarining chastotasini hisoblaymiz
+//     for (let num of nums) {
+//         numCount[num] = (numCount[num] || 0) + 1;
+//     }
+    
+//     // Faqat takrorlanmagan (chastotasi 1 ga teng) elementlarni yig'amiz
+//     let sum = 0;
+//     for (let num in numCount) {
+//         if (numCount[num] === 1) {
+//             sum += parseInt(num);
+//         }
+//     }
+
+//     return sum;
+// }
+
+// console.log("ZT-TASK",sumOfUnique([1, 2, 3, 2])); 
 
 
 // function firstUniqueCharIndex(s: string): number {
